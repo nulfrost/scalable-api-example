@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+     "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tinyhttp/app": "^1.3.3",
     "apicache": "^1.6.2",
     "dotenv": "^9.0.0",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "@tinyhttp/logger": "^1.3.0",
+    "nodemon": "^2.0.7"
   }
 }

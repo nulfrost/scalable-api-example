@@ -1,5 +1,4 @@
 const express = require("express");
-const subdomain = require("express-subdomain");
 const morgan = require("morgan");
 const version = require("express-version-route");
 const versionRequest = require("express-version-request");
@@ -33,7 +32,7 @@ routesMap.set("default", (req, res) => {
   });
 });
 
-app.use(subdomain("api", version.route(routesMap)));
+app.use(version.route(routesMap));
 
 app.use((_, res) => {
   res.status(404).json({

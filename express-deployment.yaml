@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-server
+spec:
+  selector:
+    matchLabels:
+      app: express-server
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: express-server
+    spec:
+      containers:
+        - name: cars-api
+          image: dmiller94/scalable-api-example:latest
+          ports:
+            - containerPort: 4000

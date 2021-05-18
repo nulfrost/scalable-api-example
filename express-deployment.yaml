@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: express-server
+  name: tidus
 spec:
   selector:
     matchLabels:
-      app: express-server
+      app: tidus
   replicas: 2
   template:
     metadata:
       labels:
-        app: express-server
+        app: tidus
     spec:
       containers:
         - name: cars-api

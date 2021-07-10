@@ -2,11 +2,37 @@ const express = require("express");
 const morgan = require("morgan");
 const version = require("express-version-route");
 const versionRequest = require("express-version-request");
+const swaggerui = require("swagger-ui-express");
+const swaggerjsdoc = require("swagger-jsdoc");
 
 const app = express();
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "JDM Car shop API",
+      description: "This is the API for dane's made up car shop",
+      version: "1.0.0",
+    },
+    servers: [
+      {
+        url: "http://api.jdmcarshop.dev",
+        description: "Production URL",
+      },
+      {
+        url: "http://staging.jdmcarshop.dev",
+        description: "Staging / dev URL",
+      },
+    ],
+  },
+  apis: ["./routes/v1/*.js"],
+};
+
+const specs = swaggerjsdoc(options);
 
 app.use(morgan("dev"));
 app.use(versionRequest.setVersionByAcceptHeader());
+app.use("/api-docs", swaggerui.serve, swaggerui.setup(specs));
 
 const routesMap = new Map();
 

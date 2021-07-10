@@ -36,6 +36,132 @@ router.get("/", (req, res) => {
 
 /**
  * @swagger
+ * /cars/{id}:
+ *    get:
+ *      summary: Get a specific car from a database
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: integer
+ *          required: true
+ *      tags:
+ *        - cars
+ *      description: This endpoint retrieves a single car from the database
+ *      responses:
+ *          200:
+ *           description: Returns a single car
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: objecg
+ *                 $ref: '#/components/schemas/Car'
+ */
+router.get("/", (req, res) => {
+  res.status(200).json({
+    data: {
+      message: "This gets a specific car in the database",
+    },
+  });
+});
+
+/**
+ * @swagger
+ * /cars:
+ *    post:
+ *      summary: Add a new car to the database
+ *      requestBody:
+ *        description: Required data that must be sent
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Car'
+ *      tags:
+ *        - cars
+ *      description: This endpoint adds a new car to the database
+ *      responses:
+ *          201:
+ *           description: Returns an OK message if the resource was created successfully
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: string
+ *                 example: OK
+ */
+router.post("/", (req, res) => {
+  res.status(201).json({
+    data: {
+      message: "This adds a new car to the database",
+    },
+  });
+});
+
+/**
+ * @swagger
+ * /cars:
+ *    put:
+ *      summary: Update a car in a database
+ *      requestBody:
+ *        description: Required data that must be sent
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Car'
+ *      tags:
+ *        - cars
+ *      description: This endpoint updates a car to the database
+ *      responses:
+ *          201:
+ *           description: Returns an OK message if the resource was updated successfully
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: string
+ *                 example: OK
+ */
+router.put("/", (req, res) => {
+  res.status(200).json({
+    data: {
+      message: "This updates a car in the database",
+    },
+  });
+});
+
+/**
+ * @swagger
+ * /cars/{id}:
+ *    delete:
+ *      summary: Remove a car from the database
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: integer
+ *          required: true
+ *      tags:
+ *        - cars
+ *      description: This endpoint deletes a car to the database
+ *      responses:
+ *          200:
+ *           description: Returns an OK message if the resource was deleted successfully
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: string
+ *                 example: OK
+ */
+router.delete("/", (req, res) => {
+  res.status(200).json({
+    data: {
+      message: "This deletes a car in the database",
+    },
+  });
+});
+
+/**
+ * @swagger
  * components:
  *   schemas:
  *     Car:
